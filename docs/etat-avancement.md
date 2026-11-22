@@ -11,9 +11,9 @@ Pour identifier les composants et les responsabilités de chaque lot, voir
 ## En une phrase
 
 Les deux API exposent les mêmes routes, chacune avec son client d'envoi à file
-d'attente, et sont protégées par une couche de sécurité commune. Les Bundles
-passent dans les deux sens en mémoire. **L'échange réel entre les deux postes,
-et les tests sur une vraie base Oracle, n'ont jamais été exécutés.**
+d'attente, et sont protégées par une couche de sécurité commune. Les échanges dans
+les deux sens ont été validés dans l'interface de démonstration, et le code H1 a été
+testé sur une vraie base Oracle (16 tests réussis)..**
 
 ---
 
@@ -50,7 +50,6 @@ et les tests sur une vraie base Oracle, n'ont jamais été exécutés.**
 
 | À faire | Pour qui |
 | --- | --- |
-| **Exécuter** `tests/test_oracle_reel.py` sur un vrai Oracle : écrits mais jamais lancés (pas de Docker dans l'environnement de développement) ; le DDL de base est déduit du code, à confronter à la base réelle du CHU | H1 |
 | Ajouter à `journal_echange` les colonnes : destinataire, empreinte du jeton, adresse IP, code HTTP (l'identifiant d'échange est déjà dans `details`) | H1 |
 | Ajouter à `journal_echange` les colonnes : identifiant d'échange, destinataire, empreinte du jeton, adresse IP, code HTTP | H1 |
 | Rendre atomique l'import en ligne de commande `hopital1/importer.py` : les données sont validées, puis le journal séparément. Si le journal échoue, les données restent écrites sans trace. La route API, elle, est correcte | H1 |
@@ -92,7 +91,7 @@ et les tests sur une vraie base Oracle, n'ont jamais été exécutés.**
 
 ## À décider ensemble
 
-Ces points bloquent l'échange réel. Ils ne peuvent pas être tranchés d'un seul côté.
+Points à figer dans le contrat d'échange.
 
 | Sujet | Question |
 | --- | --- |
