@@ -64,6 +64,18 @@ la racine parce qu'ils sont partagés par les deux hôpitaux.
 Tout se fait dans **PowerShell**, sur un seul poste. Les commandes partent de la
 racine du dépôt (le dossier qui contient `hopital1`, `hopital2`, `securite`).
 Les étapes 5 et 6 (Oracle, MongoDB, Orthanc) demandent Docker et quelques minutes.
+### Base Oracle du CHU
+
+Deux jeux de données au choix (n'en exécuter qu'un seul) :
+
+- **Base de référence** (120 patients, 15 cas de test) : `hopital1/hopital1_oracle.sql` puis `hopital1/cas_de_test_h1.sql`
+- **Démonstration rapide** (8 patients) : `hopital1/schema_base_h1.sql` puis `hopital1/donnees_demo_h1.sql`
+
+Ensuite, dans les deux cas : `hopital1/schema_retour_h1.sql` puis `hopital1/schema_consentement_h1.sql`.
+
+Si un conteneur `oracle-h1` contient déjà la base de référence, le démarrer avec `docker start oracle-h1` au lieu de `docker compose up`.
+
+Le code H1 a été validé sur la base de référence : 118 tests simulés, 16 tests sur un vrai Oracle (`tests/test_oracle_reel.py`, à lancer uniquement sur un compte de test séparé, car il recrée les tables), export et import réels.
  
 ### 1. Outils à installer
  
